@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class MovingCapsule : MonoBehaviour
 {
+    public int velocity;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        velocity = 100;
     }
 
     // Update is called once per frame
@@ -16,9 +17,34 @@ public class MovingCapsule : MonoBehaviour
 
     void CapsuleMover()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            gameObject.transform.position = gameObject.transform.position + Vector3.forward;
+            gameObject.transform.position += Vector3.forward  * velocity * Time.deltaTime;
+            Debug.Log(gameObject.transform.position);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            gameObject.transform.position += Vector3.left * velocity * Time.deltaTime;
+            Debug.Log(gameObject.transform.position);
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            gameObject.transform.position += Vector3.back * velocity * Time.deltaTime;
+            Debug.Log(gameObject.transform.position);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            gameObject.transform.position += Vector3.right * velocity * Time.deltaTime;
+            Debug.Log(gameObject.transform.position);
+        }
+        if (Input.GetKeyDown(KeyCode.W))
+        {
+            gameObject.transform.position += Vector3.up * velocity * Time.deltaTime;
+            Debug.Log(gameObject.transform.position);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            gameObject.transform.position += Vector3.down * velocity * Time.deltaTime;
             Debug.Log(gameObject.transform.position);
         }
     }
